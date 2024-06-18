@@ -2,7 +2,7 @@ import os
 from flask import Flask,request,jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-from routes import routes
+from routes import register_blueprints
 
 load_dotenv()
 
@@ -24,7 +24,7 @@ def verify_middleware():
     pass   
 app.before_request(verify_middleware) 
 
-app.register_blueprint(routes)
+register_blueprints(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
